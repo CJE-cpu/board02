@@ -76,6 +76,7 @@ export const updatePostInFirestore = async(post) => {
         updatedAt : new Date().toISOString(),
 
     }
+}
 import{
     addDoc,
     collection,
@@ -155,5 +156,4 @@ export const updatePostInFirestore = async(post) => {
 
     }
 
-}
 }
