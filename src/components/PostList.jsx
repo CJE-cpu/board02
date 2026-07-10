@@ -5,11 +5,13 @@ import styles from './PostList.module.scss'
 import useAuthStore from '../store/authStore'
 
 const PostList = () => {
-    const user = useAuthStore((state)=>state.user)
-    const posts = usePostStore((state)=>state.posts)
-    const deletePost = usePostStore((state)=>state.deletePost)
-    const loading = useAuthStore((state)=>state.loading)
-    const error = usePostStore((state)=>state.error)
+    const user = useAuthStore((state) => state.user)
+    const posts = usePostStore((state) => state.posts)
+    const deletePost = usePostStore((state) => state.deletePost)
+    const loading = usePostStore((state) => state.loading)
+    const error = usePostStore((state) => state.error)
+
+    const userId = user?.uid
 
   return (
     <section>
@@ -29,8 +31,8 @@ const PostList = () => {
                 </thead>
                 <tbody>
                     {
-                        posts.map( (item) => {
-                            const isOwner = user.uid === item.uid
+                        posts.map((item) => {
+                            const isOwner = userId && userId === item.uid
                             return (
                                 <tr key={item.id}>
                                     <td className={styles.postNum}>{posts.length}</td>
@@ -40,12 +42,10 @@ const PostList = () => {
                                         {isOwner ? (
                                             <>
                                                 <Link to={`/detail/${item.id}`}>수정</Link>
-                                                <button onClick={() => {props.deletePost(item.id)}}>삭제</button>
+                                                <button onClick={() => deletePost(item.id)}>삭제</button>
                                             </>
                                         ) : (
-                                            <>
-                                                <span>읽기</span>
-                                            </>
+                                            <span>읽기</span>
                                         )}
                                     </td>
                                 </tr>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import useAuthStore from '../store/authStore'
+import styles from './AuthForm.module.scss'
 
 const AuthForm = () => {
-    const [mode, setMode] = useState('signin')
+    const [mode, setMode] = useState('signIn')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -28,28 +29,44 @@ const AuthForm = () => {
             }else{
                 await signUp({email, password})
             }
-        }catch(err){
-            alert(err.message)
+        }catch(error){
+            alert(error.message)
         }
     }
   return (
-    <div>
-        <h2>{isSignIn ? '로그인' : '회원가입'}</h2>
-        <form onSubmit={submitAuth}>
-            <input type='email' placeholder='이메일 입력'
-                value={email}
-                onChange={(e)=>setEmail(e.target.value)}
-            />
-            <input type='password' placeholder='패스워드 입력'
-                value={password}
-                onChange={(e)=>setPassword(e.target.value)}
-            />
-            <button type='submit' disabled={loading}>
-                {loading ? "처리중" : isSignIn ? "로그인" : "회원가입"}
+    <div className={styles.authCard}>
+        <h2 className={styles.authTitle}>{isSignIn ? '로그인' : '회원가입'}</h2>
+        <p className={styles.authDescription}>
+          {isSignIn ? '계정으로 로그인 해주세요.' : '새 계정을 만들려면 아래 정보를 입력하세요.'}
+        </p>
+        <form onSubmit={submitAuth} className={styles.formGroup}>
+            <label className={styles.label}>
+                이메일
+                <input className={styles.input} type='email' placeholder='example@domain.com'
+                    value={email}
+                    onChange={(e)=>setEmail(e.target.value)}
+                />
+            </label>
+            <label className={styles.label}>
+                비밀번호
+                <input className={styles.input} type='password' placeholder='8자 이상 입력'
+                    value={password}
+                    onChange={(e)=>setPassword(e.target.value)}
+                />
+            </label>
+            <button className={styles.submitButton} type='submit' disabled={loading}>
+                {loading ? "처리중..." : isSignIn ? "로그인" : "회원가입"}
             </button>
         </form>
-        <br/><br/>
-        <button onClick={()=>setMode(isSignIn ? 'signIn' : 'signUp')}>{isSignIn ? "회원가입하기" : "로그인하기"}</button>
+        {error && <p className={styles.errorMessage}>{error}</p>}
+        <div className={styles.toggleArea}>
+            <span className={styles.toggleLabel}>
+              {isSignIn ? '처음 오셨나요?' : '이미 계정이 있으신가요?'}
+            </span>
+            <button type='button' className={styles.toggleButton} onClick={()=>setMode(isSignIn ? 'signUp' : 'signIn')}>
+              {isSignIn ? "회원가입하기" : "로그인하기"}
+            </button>
+        </div>
     </div>
   )
 }

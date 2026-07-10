@@ -10,6 +10,7 @@ const PostForm = () => {
 
     const user = useAuthStore((state) => state.user)
     const addPost = usePostStore((state) => state.addPost)
+    const loading = useAuthStore((state) => state.loading)
 
 
     // 입력값을 확인후 새 게시글 데이터를 전송한다. (등록)

@@ -4,7 +4,6 @@ import { signOutWithFirebase,
          signUpwithEmail,
          subscribeAuthState
 } from '../services/firebaseAuth'
-import { initializeAuth } from 'firebase/auth';
 
 const mapUser = (user) => {
     if(!user){
@@ -58,9 +57,9 @@ const useAuthStore = create((set) => ({
     },
 
     // 로그아웃
-    signOut : async({})=>{
-        await signOutwithFirebase()
-        set({user : null, error : ''})
+    signOut : async() => {
+        await signOutWithFirebase()
+        set({ user : null, error : '' })
     }
 }))
 

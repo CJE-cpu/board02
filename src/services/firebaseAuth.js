@@ -33,21 +33,21 @@ export const subscribeAuthState = (callback) => {
 }
 
 // 이메일/비밀번호로 회원가입
-export const signUpwithEmail = async(email, password) => {
-    try{
+export const signUpwithEmail = async({ email, password }) => {
+    try {
         const credential = await createUserWithEmailAndPassword(auth, email, password)
         return credential.user
-    }catch(err){
+    } catch (err) {
         handleAuthError(err)
     }
 }
 
 // 이메일/비밀번호 로그인
-export const signInwithEmail = async(email, password) => {
-    try{
+export const signInwithEmail = async({ email, password }) => {
+    try {
         const credential = await signInWithEmailAndPassword(auth, email, password)
         return credential.user
-    }catch(err){
+    } catch (err) {
         handleAuthError(err)
     }
 }

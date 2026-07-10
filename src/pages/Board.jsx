@@ -16,7 +16,7 @@ const Board = (props) => {
         <PostForm addPost={addPost} />
 
         {/* 게시글 전체 목록 */}
-        <PostList posts={props.posts} deletePost={deletePost} updatePost={props.updatePost} />
+        <PostList />
     </main>
   )
 }
