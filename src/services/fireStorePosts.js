@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import{
     addDoc,
     collection,
@@ -77,7 +76,6 @@ export const updatePostInFirestore = async(post) => {
         updatedAt : new Date().toISOString(),
 
     }
-=======
 import{
     addDoc,
     collection,
@@ -156,5 +154,6 @@ export const updatePostInFirestore = async(post) => {
         updatedAt : new Date().toISOString(),
 
     }
->>>>>>> f0f4e1417b7a90bff9c6b4a147d4b567d3650470
+
+}
 }
