@@ -6,7 +6,6 @@ import{
     setDocs,
     orderBy,
     query,
-    serverTimeStamp,
     updateDoc,
     serverTimestamp,
 } from 'firebase/firestore'
@@ -46,8 +45,8 @@ export const addPostToFirestore = async (post) => {
         writer : post.writer,
         content : post.content,
         uid : post.uid,
-        createdAt : serverTimeStamp(),
-        updateAt : serverTimeStamp(),
+        createdAt : serverTimestamp(),
+        updateAt : serverTimestamp(),
     })
     return{
         id : document.id,
