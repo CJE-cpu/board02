@@ -60,7 +60,6 @@ const PostForm = () => {
             }} />
        </label>
        <label className={styles.contentBox}>글 내용
-        <input type='text'/>
         <textarea type='text' placeholder='글내용입력' value={content}
          onChange={ (e)=>{
             setContent(e.target.value)
