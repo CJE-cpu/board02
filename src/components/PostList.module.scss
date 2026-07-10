@@ -1,0 +1,66 @@
+@use '../scss/mixin.scss' as m;
+@use '../scss/variables.scss' as v;
+
+section{
+    @include m.flexLeftC;
+    margin: 20px 50px;
+    padding: 25px;
+    h3{
+        color: white;
+    }
+    table{
+        overflow: hidden;
+        background-color: rgba(255, 255, 255, 0.5);
+        margin: 20px 0;
+        width: 100%;
+        border-radius: v.$radius;
+        @include m.flexCenterC;
+        border: 1px solid v.$lineColor;
+        thead{
+            background-color: v.$mainColor;
+            color: white;
+            padding: 10px 0;
+            width: 100%;
+            tr{
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                .listNum{
+                    width: 50px;
+                }
+                // .listTitle{
+                //     width: auto;
+                // }
+                // .listWriter{
+                //     width: 150px;
+                // }
+                // .listEdit{
+                //     width: 200px;
+                // }
+            }
+        }
+        tbody{
+            width: 100%;
+            padding: 10px 0;
+            tr{
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                margin: 10px 0;
+                td{
+                    color: black;
+                    font-weight: 600;
+                    button{
+                        @include m.Btn;
+                    }
+                    @include m.flexCenter;
+                    gap: 10px;
+                    a{
+                        color: black;
+                    }
+                }
+                .postNum{
+                    width: 50px;
+                }
+            }
+        }
+    }
+}

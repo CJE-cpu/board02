@@ -1,0 +1,16 @@
+@use '../scss/mixin.scss' as m;
+@use '../scss/variables.scss' as v;
+
+main{
+    display: block;
+    padding-top: 20px;
+    h2{
+        font-size: 45px;
+        font-weight: bold;
+        color: white;
+    }
+    background-image: url('../assets/img/pexels-jan-tang-598592438-35705728.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
